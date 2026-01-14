@@ -10,7 +10,7 @@ import {
   ArrowRight,
   X,
 } from "lucide-react";
-import SmartitboxAwardsSection from "./SmartitboxAwardsSection";
+import SmartitboxAwardsSection from "./ImastAwardsSection";
 import Link from "next/link";
 
 // --- Interfaces

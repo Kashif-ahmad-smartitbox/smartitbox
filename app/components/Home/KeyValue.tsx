@@ -12,7 +12,7 @@ import {
   Clock,
   LucideIcon,
 } from "lucide-react";
-import SmartitboxCard, { SmartitboxCardProps } from "./SmartitboxCard";
+import SmartitboxCard, { SmartitboxCardProps } from "./ImastCard";
 import { highlightText } from "@/lib/highlightText";
 
 export type Feature = {
