@@ -1,0 +1,39 @@
+{
+  "name": "smartitbox",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "lint": "eslint",
+    "push": "git add . && git commit -m 'Code Updated' && git push"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^44.3.0",
+    "@ckeditor/ckeditor5-react": "^11.0.0",
+    "@tanstack/react-query": "^5.90.3",
+    "@vercel/analytics": "^1.5.0",
+    "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
+    "dompurify": "^3.3.0",
+    "framer-motion": "^12.23.18",
+    "lucide-react": "^0.544.0",
+    "next": "^16.0.8",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-icons": "^5.5.0",
+    "recharts": "^3.2.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.3",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
