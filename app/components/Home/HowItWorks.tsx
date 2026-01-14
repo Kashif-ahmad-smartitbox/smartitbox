@@ -14,7 +14,7 @@ import {
   BarChart3,
   BarChart3 as BarChart,
 } from "lucide-react";
-import SmartitboxCertificationsRow from "./SmartitboxCertificationsRow";
+import ImastCertificationsRow from "./ImastCertificationsRow";
 
 type IconName =
   | "Server"
@@ -286,7 +286,7 @@ export default function HowItWorks({ data }: Props) {
           </div>
         </div>
       </div>
-      <SmartitboxCertificationsRow badges={data.badges} />
+      <ImastCertificationsRow badges={data.badges} />
     </section>
   );
 }
