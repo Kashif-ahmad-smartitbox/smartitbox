@@ -86,6 +86,20 @@ const HeroHeaderSection = dynamic(
   }
 );
 
+const StoryTimelineSection = dynamic(
+  () => import("@/app/components/StoryTimelineSection"),
+  {
+    ssr: true,
+  }
+);
+
+const ContactSection = dynamic(
+  () => import("@/app/components/ContactSection"),
+  {
+    ssr: true,
+  }
+);
+
 export type ModuleComponentProps = {
   data: any;
 };
@@ -98,6 +112,7 @@ const registry: Record<string, ComponentType<ModuleComponentProps>> = {
   blogsection: BlogSection,
   aboutsection: AboutSection,
   resources: ResourcesSection,
+  contactsection: ContactSection,
   clientssection: ClientsSection,
   servicessection: ServicesSection,
   heroheadersection: HeroHeaderSection,
@@ -105,6 +120,7 @@ const registry: Record<string, ComponentType<ModuleComponentProps>> = {
   certificatesection: CertificateSection,
   workprocesssection: WorkProcessSection,
   casestudiessection: CaseStudiesSection,
+  storytimelinesection: StoryTimelineSection,
   coreofferingssection: CoreOfferingsSection,
 };
 

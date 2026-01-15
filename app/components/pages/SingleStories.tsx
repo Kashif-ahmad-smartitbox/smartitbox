@@ -49,7 +49,6 @@ function SingleStories() {
       } catch (err: any) {
         console.error("Failed to fetch story:", err);
 
-        // If it's a 404 error or story not found, show 404 page
         if (
           err?.response?.status === 404 ||
           err?.message?.includes("not found")

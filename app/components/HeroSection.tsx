@@ -102,7 +102,8 @@ const STAT_VARIANTS: Variants = {
 
 interface HeroSectionProps {
   data: {
-    title: string;
+    titleLines: string[];
+    highlightedIndices: number[];
     subtitle: string;
     description: string[];
     highlightedText: string;
@@ -193,24 +194,34 @@ function HeroSection({ data }: HeroSectionProps) {
 
               {/* Main Heading */}
               <motion.div variants={CHILD_VARIANTS}>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-[1.1] tracking-tight text-gray-900">
-                  {data.title.split(data.highlightedText)[0]}
-                  <span className="relative inline-block">
-                    <span className="relative z-10 text-primary-500 bg-clip-text">
-                      {data.highlightedText}
-                    </span>
-                    <motion.span
-                      initial={{ scaleX: 0 }}
-                      animate={isMainInView ? { scaleX: 1 } : { scaleX: 0 }}
-                      transition={{
-                        delay: 0.5,
-                        duration: 0.8,
-                        ease: "easeOut",
-                      }}
-                      className="absolute bottom-1 left-0 right-0 h-3 bg-primary-100/50 z-0 rounded-lg"
-                    />
-                  </span>
-                  {data.title.split(data.highlightedText)[1]}
+                <h1 className="text-3xl sm:text-3xl md:text-4xl xl:text-5xl font-bold leading-[1.1] tracking-tight text-gray-900">
+                  {data.titleLines.map((line, index) => (
+                    <React.Fragment key={index}>
+                      {data.highlightedIndices &&
+                      data.highlightedIndices.includes(index) ? (
+                        <span className="relative inline-block">
+                          <span className="relative z-10 text-primary-500 bg-clip-text">
+                            {line}
+                          </span>
+                          <motion.span
+                            initial={{ scaleX: 0 }}
+                            animate={
+                              isMainInView ? { scaleX: 1 } : { scaleX: 0 }
+                            }
+                            transition={{
+                              delay: 0.5,
+                              duration: 0.8,
+                              ease: "easeOut",
+                            }}
+                            className="absolute bottom-1 left-0 right-0 h-3 bg-primary-100/50 z-0 rounded-lg"
+                          />
+                        </span>
+                      ) : (
+                        line
+                      )}
+                      {index < data.titleLines.length - 1 && <br />}
+                    </React.Fragment>
+                  ))}
                 </h1>
               </motion.div>
 

@@ -378,19 +378,17 @@ export default function ContactSection({ data }: ContactSectionProps) {
 
   return (
     <section
-      className="relative py-24 lg:py-32 overflow-hidden bg-linear-to-br from-white via-primary-50/20 to-primary-100/10"
+      className="relative py-24 lg:py-32 overflow-hidden bg-white"
       id="contact"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Enhanced Header with animation */}
-
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-16">
           {/* Enhanced Contact Information - Glassmorphism Card */}
           <div className="lg:col-span-1">
             <div className="sticky top-24">
               <div className="bg-white/80 backdrop-blur-xl rounded-3xl p-8 border border-white/50 shadow-xl shadow-primary-100/30 hover:shadow-2xl hover:shadow-primary-200/40 transition-all duration-500 group">
                 <div className="relative mb-10">
-                  <div className="absolute -top-4 -left-4 w-16 h-16 rounded-2xl bg-linear-to-br from-primary-500 to-blue-500 opacity-10 blur-lg" />
+                  <div className="absolute -top-4 -left-4 w-16 h-16 rounded-2xl opacity-10 blur-lg" />
                   <div className="flex items-center gap-4 relative">
                     <div>
                       <h3 className="text-lg font-bold text-gray-900">

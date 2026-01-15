@@ -150,7 +150,7 @@ export default function WhyChooseSMARTITBOX({
 
   return (
     <section
-      className="w-full bg-gradient-to-br from-[#E63935] to-[#F29646]"
+      className="w-full bg-linear-to-br from-[#E63935] to-[#F29646]"
       aria-labelledby="why-smartitbox-title"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
@@ -178,7 +178,7 @@ export default function WhyChooseSMARTITBOX({
               >
                 <div className="flex items-start gap-4">
                   <div
-                    className={`flex-shrink-0 w-14 h-14 rounded-lg bg-[#654c0010] flex items-center justify-center`}
+                    className={`shrink-0 w-14 h-14 rounded-lg bg-[#654c0010] flex items-center justify-center`}
                     aria-hidden
                   >
                     <div className={`${d.color} bg-white/0`}>{d.icon}</div>
@@ -232,7 +232,7 @@ export default function WhyChooseSMARTITBOX({
                       key={`smartitbox-${index}`}
                       className="flex items-start gap-3"
                     >
-                      <span className="flex-shrink-0 mt-1 flex items-center justify-center">
+                      <span className="shrink-0 mt-1 flex items-center justify-center">
                         <BlinkBullet />
                       </span>
                       <span className="leading-tight">{point.text}</span>
@@ -252,7 +252,7 @@ export default function WhyChooseSMARTITBOX({
                       key={`comp-${index}`}
                       className="flex items-start gap-3"
                     >
-                      <span className="flex-shrink-0 mt-1 flex items-center justify-center">
+                      <span className="shrink-0 mt-1 flex items-center justify-center">
                         <RedCrossBullet />
                       </span>
                       <span className="leading-tight">{point.text}</span>
