@@ -80,7 +80,7 @@ export function Button({
         <div
           className={`absolute inset-0 bg-linear-to-br ${
             variant === "primary"
-              ? "from-primary-600 to-primary-500"
+              ? "from-primary-500 to-primary-500"
               : "from-secondary-600 to-secondary-500"
           } opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
         />

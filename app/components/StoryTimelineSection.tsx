@@ -42,17 +42,17 @@ const CHILD_VARIANTS: Variants = {
   },
 };
 
-const TIMELINE_ITEM_VARIANTS: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (delay: number) => ({
+const CARD_VARIANTS: Variants = {
+  hidden: { opacity: 0, scale: 0.9, y: 30 },
+  visible: {
     opacity: 1,
+    scale: 1,
     y: 0,
     transition: {
-      delay,
-      duration: 0.6,
+      duration: 0.7,
       ease: "easeOut",
     },
-  }),
+  },
 };
 
 interface TimelineItem {
@@ -60,6 +60,7 @@ interface TimelineItem {
   title: string;
   description: string;
   icon: "calendar" | "target" | "rocket" | "trophy" | "users" | "zap";
+  highlight?: boolean;
 }
 
 interface StoryTimelineSectionProps {
@@ -69,10 +70,6 @@ interface StoryTimelineSectionProps {
     headingPart2: string;
     subheading: string;
     timeline: TimelineItem[];
-    ctaButton: {
-      text: string;
-      href: string;
-    };
   };
 }
 
@@ -88,7 +85,7 @@ const iconMap = {
 function StoryTimelineSection({ data }: StoryTimelineSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const controls = useAnimation();
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   useEffect(() => {
     if (isInView) {
@@ -99,7 +96,7 @@ function StoryTimelineSection({ data }: StoryTimelineSectionProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white py-32 overflow-hidden"
+      className="relative bg-white py-15 lg:py-30 overflow-hidden"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
@@ -107,7 +104,7 @@ function StoryTimelineSection({ data }: StoryTimelineSectionProps) {
           variants={CONTAINER_VARIANTS}
           initial="hidden"
           animate={controls}
-          className="text-center mb-20"
+          className="text-center mb-16 lg:mb-24"
         >
           {/* Top Label */}
           <motion.div
@@ -118,11 +115,11 @@ function StoryTimelineSection({ data }: StoryTimelineSectionProps) {
           </motion.div>
 
           {/* Main Heading */}
-          <motion.div variants={CHILD_VARIANTS}>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-gray-900">
+          <motion.div variants={CHILD_VARIANTS} className="mb-8">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.1] tracking-tight text-gray-900">
               {data.headingPart1}{" "}
               <span className="relative inline-block">
-                <span className="relative z-10 text-primary-500 bg-clip-text">
+                <span className="relative z-10 text-transparent bg-clip-text bg-linear-to-r from-primary-500 to-primary-600">
                   {data.headingPart2}
                 </span>
                 <motion.span
@@ -133,98 +130,126 @@ function StoryTimelineSection({ data }: StoryTimelineSectionProps) {
                     duration: 0.8,
                     ease: "easeOut",
                   }}
-                  className="absolute bottom-1 left-0 right-0 h-3 bg-primary-100/50 z-0 rounded-lg"
+                  className="absolute bottom-2 left-0 right-0 h-3 bg-linear-to-r from-primary-100/50 to-primary-200/30 z-0 rounded-lg"
                 />
               </span>
             </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          </motion.div>
+
+          {/* Subheading */}
+          <motion.div variants={CHILD_VARIANTS}>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               {data.subheading}
             </p>
           </motion.div>
         </motion.div>
 
-        {/* Timeline */}
+        {/* Modern Timeline */}
         <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-linear-to-b from-primary-400/30 via-primary-300/30 to-transparent hidden lg:block" />
-
-          {/* Animated Vertical Line Effect */}
+          {/* Main timeline line */}
           <motion.div
-            initial={{ scaleY: 0 }}
-            animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
-            transition={{ delay: 0.3, duration: 1.5, ease: "easeOut" }}
-            className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-linear-to-b from-primary-400 via-primary-300 to-transparent origin-top hidden lg:block"
-            style={{ top: 0 }}
+            initial={{ scaleX: 0 }}
+            animate={isInView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-linear-gradient-to-b from-transparent via-primary-300/50 to-transparent transform -translate-x-1/2"
           />
 
           {/* Timeline Items */}
-          <div className="space-y-16 lg:space-y-24">
+          <div className="space-y-10 lg:space-y-5">
             {data.timeline.map((item, index) => {
               const IconComponent = iconMap[item.icon];
               const isEven = index % 2 === 0;
-              const delay = 0.5 + index * 0.15;
+              const delay = 0.3 + index * 0.15;
 
               return (
                 <motion.div
                   key={item.year}
                   custom={delay}
-                  variants={TIMELINE_ITEM_VARIANTS}
+                  variants={CARD_VARIANTS}
                   initial="hidden"
                   animate={isInView ? "visible" : "hidden"}
-                  className={`relative flex flex-col lg:flex-row items-center gap-8 ${
+                  className={`relative flex flex-col lg:flex-row items-center ${
                     isEven ? "lg:flex-row-reverse" : ""
                   }`}
                 >
-                  {/* Year */}
-                  <div className="lg:w-1/2 flex justify-center lg:justify-end">
+                  {/* Year Indicator - Desktop */}
+                  <div className="hidden lg:flex w-1/2 justify-center">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      className="relative group"
+                      className={`relative group ${
+                        isEven ? "lg:pr-12" : "lg:pl-12"
+                      }`}
                     >
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={isInView ? { scale: 1 } : { scale: 0 }}
-                        transition={{ delay: delay + 0.1 }}
-                        className="absolute -inset-2 bg-primary-100/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      {/* Connecting line */}
+                      <div
+                        className={`absolute top-1/2 w-12 h-0.5 bg-linear-to-r ${
+                          isEven
+                            ? "right-0 from-primary-300 to-transparent"
+                            : "left-0 from-transparent to-primary-300"
+                        }`}
                       />
-                      <div className="relative inline-flex items-center gap-3 px-6 py-3 bg-white border border-gray-100 rounded-full shadow-lg shadow-gray-900/5">
+
+                      {/* Year badge */}
+                      <div className="relative inline-flex flex-col items-center">
                         <motion.div
                           initial={{ scale: 0 }}
                           animate={isInView ? { scale: 1 } : { scale: 0 }}
-                          transition={{
-                            delay: delay + 0.2,
-                            type: "spring",
-                            ...SPRING_CONFIG,
-                          }}
-                          className="w-3 h-3 rounded-full bg-primary-500"
+                          transition={{ delay: delay + 0.1 }}
+                          className="absolute -inset-4 bg-primary-100/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         />
-                        <span className="text-lg font-bold text-gray-900">
-                          {item.year}
-                        </span>
+                        <div className="relative flex items-center gap-3">
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={isInView ? { scale: 1 } : { scale: 0 }}
+                            transition={{
+                              delay: delay + 0.2,
+                              type: "spring",
+                              ...SPRING_CONFIG,
+                            }}
+                            className="w-3 h-3 rounded-full bg-primary-500"
+                          />
+                          <span className="text-2xl font-bold text-gray-900">
+                            {item.year}
+                          </span>
+                        </div>
                       </div>
                     </motion.div>
                   </div>
 
-                  {/* Timeline Dot */}
-                  <div className="absolute left-1/2 transform -translate-x-1/2 lg:left-1/2 z-10">
+                  {/* Timeline Center Dot */}
+                  <div className="hidden lg:flex absolute left-1/2 transform -translate-x-1/2 z-20">
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={isInView ? { scale: 1 } : { scale: 0 }}
                       transition={{
-                        delay: delay + 0.1,
+                        delay: delay + 0.15,
                         type: "spring",
                         ...SPRING_CONFIG,
                       }}
-                      className="w-6 h-6 rounded-full bg-white border-4 border-primary-500 shadow-lg"
-                    />
+                      className="relative"
+                    >
+                      <div className="w-5 h-5 rounded-full bg-white border-4 border-primary-500 shadow-lg shadow-primary-500/30" />
+                      <motion.div
+                        animate={{
+                          scale: [1, 1.5, 1],
+                          opacity: [0.3, 0, 0.3],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeInOut",
+                        }}
+                        className="absolute inset-0 rounded-full bg-primary-400/30 border-2 border-primary-400/50"
+                      />
+                    </motion.div>
                   </div>
 
                   {/* Content Card */}
-                  <div className="lg:w-1/2">
+                  <div className="w-full lg:w-1/2">
                     <motion.div
                       whileHover={{
-                        y: -8,
-                        boxShadow: "0 20px 40px -10px rgba(59, 130, 246, 0.15)",
+                        y: -6,
+                        boxShadow: "0 25px 50px -12px rgba(59, 130, 246, 0.15)",
                       }}
                       transition={{
                         type: "spring",
@@ -234,20 +259,27 @@ function StoryTimelineSection({ data }: StoryTimelineSectionProps) {
                       }}
                       className="relative group"
                     >
-                      {/* Card Background Effect */}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={
-                          isInView
-                            ? { opacity: 1, scale: 1 }
-                            : { opacity: 0, scale: 0.95 }
-                        }
-                        transition={{ delay: delay }}
-                        className="absolute -inset-2 bg-linear-to-r from-primary-500/5 to-primary-300/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                      />
+                      {/* Year Indicator - Mobile */}
+                      <div className="lg:hidden mb-6">
+                        <div className="flex items-center justify-center gap-3">
+                          <div className="w-2 h-2 rounded-full bg-primary-500" />
+                          <span className="text-xl font-bold text-gray-900">
+                            {item.year}
+                          </span>
+                        </div>
+                      </div>
 
-                      <div className="relative bg-white p-8 rounded-2xl border border-gray-100 shadow-xl shadow-gray-900/5">
-                        <div className="flex items-start gap-6">
+                      {/* Card */}
+                      <div
+                        className={`relative bg-white p-8 rounded-2xl border border-gray-100 transition-all duration-300 overflow-hidden ${
+                          item.highlight ? "ring-2 ring-primary-500/20" : ""
+                        }`}
+                      >
+                        {/* Background gradient */}
+                        <div className="absolute inset-0 bg-linear-gradient-to-br from-white via-white to-primary-50/5" />
+
+                        {/* Icon and Header */}
+                        <div className="relative flex items-start gap-6 mb-6">
                           <motion.div
                             whileHover={{ scale: 1.1, rotate: 5 }}
                             transition={{
@@ -256,22 +288,44 @@ function StoryTimelineSection({ data }: StoryTimelineSectionProps) {
                               damping: SPRING_CONFIG.damping,
                               mass: SPRING_CONFIG.mass,
                             }}
-                            className="shrink-0 w-14 h-14 rounded-xl bg-linear-to-br from-primary-50 to-primary-100 flex items-center justify-center border border-primary-200/50"
+                            className={`shrink-0 w-12 h-12 rounded-2xl flex items-center justify-center ${
+                              item.highlight
+                                ? "bg-linear-to-br from-primary-500 to-primary-600"
+                                : "bg-linear-to-br from-primary-50 to-primary-100"
+                            } shadow-md`}
                           >
                             <IconComponent
-                              className="text-primary-500"
+                              className={
+                                item.highlight
+                                  ? "text-white"
+                                  : "text-primary-500"
+                              }
                               size={24}
                             />
                           </motion.div>
-                          <div>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3">
-                              {item.title}
-                            </h3>
-                            <p className="text-gray-600 leading-relaxed">
-                              {item.description}
-                            </p>
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between mb-2">
+                              <h3 className="text-2xl font-bold text-gray-900">
+                                {item.title}
+                              </h3>
+                              {item.highlight && (
+                                <span className="px-3 py-1 bg-primary-500/10 text-primary-600 text-sm font-semibold rounded-full">
+                                  Milestone
+                                </span>
+                              )}
+                            </div>
+                            <div className="h-1 w-16 bg-linear-to-r from-primary-400 to-primary-300 rounded-full mb-4" />
                           </div>
                         </div>
+
+                        {/* Description */}
+                        <p className="relative text-lg text-gray-600 leading-relaxed mb-6">
+                          {item.description}
+                        </p>
+
+                        {/* Decorative elements */}
+                        <div className="absolute top-0 right-0 w-24 h-24 bg-linear-to-br from-primary-500/5 to-transparent rounded-full -translate-y-1/2 translate-x-1/2" />
+                        <div className="absolute bottom-0 left-0 w-16 h-16 bg-primary-400/5 rounded-full translate-y-1/2 -translate-x-1/2" />
                       </div>
                     </motion.div>
                   </div>
@@ -279,38 +333,15 @@ function StoryTimelineSection({ data }: StoryTimelineSectionProps) {
               );
             })}
           </div>
-        </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 1.2 }}
-          className="mt-20 text-center"
-        >
-          <motion.a
-            href={data.ctaButton.href}
-            initial={false}
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 10px 30px -5px rgba(59, 130, 246, 0.3)",
-            }}
-            whileTap={{ scale: 0.98 }}
-            transition={{
-              type: "spring",
-              stiffness: SPRING_CONFIG.stiffness,
-              damping: SPRING_CONFIG.damping,
-              mass: SPRING_CONFIG.mass,
-            }}
-            className="group relative inline-flex items-center bg-linear-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-10 py-4 rounded-full font-semibold text-base shadow-lg shadow-primary-500/25 gap-3"
-          >
-            <span>{data.ctaButton.text}</span>
-            <ArrowUpRight
-              size={18}
-              className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200"
-            />
-          </motion.a>
-        </motion.div>
+          {/* Progress line */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            animate={isInView ? { scaleY: 1 } : { scaleY: 0 }}
+            transition={{ duration: 2, ease: "easeInOut" }}
+            className="hidden lg:block absolute left-1/2 top-0 h-full w-0.5 bg-linear-gradient-to-b from-primary-500 via-primary-400 to-primary-300 transform -translate-x-1/2 origin-top"
+          />
+        </div>
       </div>
     </section>
   );

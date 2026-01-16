@@ -14,7 +14,7 @@ export function MobileToggleButton({
 }: MobileToggleButtonProps) {
   return (
     <button
-      className={`rounded-2xl bg-black/15 backdrop-blur-sm border border-white/30 hover:bg-black/25 transition-all duration-500 ${
+      className={`rounded-2xl bg-primary-500 backdrop-blur-sm border border-white/30 hover:bg-primary-400 transition-all duration-500 ${
         isMobile ? "p-2.5" : "p-3"
       }`}
       aria-label="Toggle menu"

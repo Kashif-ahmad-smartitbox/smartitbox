@@ -31,7 +31,7 @@ export function MobileMenu({
 
   // Create menu items EXCLUDING certificate from dropdowns
   const menuItems = {
-    solution: data.products.map((s) => ({
+    products: data.products.map((s) => ({
       label: s.title,
       icon: s.icon,
       href: s.href,
@@ -63,10 +63,7 @@ export function MobileMenu({
   };
 
   return (
-    <div
-      className="fixed inset-0 bg-linear-to-br from-gray-900 to-black z-40 backdrop-blur-lg"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-40 backdrop-blur-lg" onClick={onClose}>
       <div
         className={`absolute right-0 top-0 bottom-0 ${menuWidth} max-w-full h-screen bg-white ${padding} overflow-y-auto transform transition-transform duration-500 shadow-2xl`}
         onClick={handleMenuClick}
@@ -78,7 +75,7 @@ export function MobileMenu({
           activeMenu={activeMenu}
           setActiveMenu={setActiveMenu}
           onLinkClick={handleLinkClick}
-          certificateItem={certificateItem} // Pass certificate item
+          certificateItem={certificateItem}
         />
 
         <CTAButton className="w-full mt-3" size="lg" onClick={handleLinkClick}>
@@ -136,12 +133,11 @@ function NavigationSection({
 }: NavigationSectionProps) {
   return (
     <nav className="space-y-3">
-      {/* Certificate as direct link at the top */}
       {certificateItem && (
         <div className="mb-2">
           <Link
             href={certificateItem.href}
-            className="w-full flex items-center gap-4 p-5 rounded-2xl bg-gradient-to-r from-amber-50 to-amber-100/50 hover:from-amber-100 hover:to-amber-200/50 transition-all duration-500 font-bold text-gray-900 border border-amber-200/60 hover:border-amber-300"
+            className="w-full flex items-center gap-4 p-3 rounded-lg bg-linear-to-r from-amber-50 to-amber-100/50 hover:from-amber-100 hover:to-amber-200/50 transition-all duration-500 font-bold text-gray-900 border border-amber-200/60 hover:border-amber-300"
             onClick={onLinkClick}
           >
             <Award size={18} className="text-amber-600" />
@@ -190,7 +186,7 @@ function MobileMenuSection({
     <div>
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between p-5 rounded-2xl bg-gradient-to-r from-gray-50 to-gray-100/50 hover:from-emerald-50 hover:to-emerald-100/50 transition-all duration-500 font-bold text-gray-900 border border-gray-200/60"
+        className="w-full flex items-center justify-between p-3 rounded-lg bg-linear-to-r from-gray-50 to-gray-100/50 hover:from-emerald-50 hover:to-emerald-100/50 transition-all duration-500 font-bold text-gray-900 border border-gray-200/60"
       >
         <span className="capitalize">{menuKey}</span>
         <ChevronDown

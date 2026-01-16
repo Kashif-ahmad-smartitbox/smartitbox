@@ -12,12 +12,12 @@ type Props = {
 
 const BrandSection: React.FC<Props> = ({ isExpanded, onToggle, ariaLabel }) => {
   return (
-    <div className="px-4 min-h-[var(--header-h)] flex items-center justify-between gap-3 border-b border-gray-100">
+    <div className="px-4 min-h-(--header-h) flex items-center justify-between gap-3 border-b border-gray-100">
       <div className="flex items-center gap-3">
         {isExpanded ? (
-          <img className="h-6" src="/logo.png" alt="Smartitbox" />
+          <img className="h-10" src="/logo.png" alt="Smartitbox" />
         ) : (
-          <img className="h-6" src="/logo.png" alt="Smartitbox compact" />
+          <img className="h-10" src="/logo.png" alt="Smartitbox compact" />
         )}
       </div>
 
