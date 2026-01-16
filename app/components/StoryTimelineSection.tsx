@@ -109,7 +109,7 @@ function StoryTimelineSection({ data }: StoryTimelineSectionProps) {
           {/* Top Label */}
           <motion.div
             variants={CHILD_VARIANTS}
-            className="inline-flex items-center gap-2 mb-6 px-4 py-2.5 bg-linear-to-r from-primary-50 to-primary-100 text-secondary-900 text-sm font-semibold rounded-lg border border-primary-200/50"
+            className="inline-flex items-center gap-2 mb-6 px-4 py-2.5 bg-linear-to-l from-rose-200 via-primary-50 to-rose-200 text-secondary-900 text-sm font-semibold rounded-lg border border-primary-200/50"
           >
             <span>{data.sectionLabel}</span>
           </motion.div>

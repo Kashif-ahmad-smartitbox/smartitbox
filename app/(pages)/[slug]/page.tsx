@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import ModuleRenderer from "@/components/modules/ModuleRenderer";
 import { getPageWithContent } from "@/services/modules/pageModule";
 import { notFound } from "next/navigation";
+import TeamSection from "@/app/components/TeamSection";
 
 type PageResponse = {
   page?: any;

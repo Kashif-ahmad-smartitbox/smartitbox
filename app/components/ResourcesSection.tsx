@@ -258,7 +258,7 @@ export default function Resources({ data }: ResourcesProps) {
   }
 
   return (
-    <section className="relative py-20 lg:py-30 bg-linear-to-b from-white via-gray-50/30 to-white overflow-hidden">
+    <section className="relative py-5 lg:py-10 bg-linear-to-l from-gray-200 to-gray-200 overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* HEADER SECTION */}
         <motion.div
@@ -273,7 +273,7 @@ export default function Resources({ data }: ResourcesProps) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 mb-6 px-4 py-2.5 bg-linear-to-r from-primary-50 to-primary-100 text-secondary-900 text-sm font-semibold rounded-lg border border-primary-200/50"
+            className="inline-flex items-center gap-2 mb-6 px-4 py-2.5 bg-linear-to-l from-rose-200 via-primary-50 to-rose-200 text-secondary-900 text-sm font-semibold rounded-lg border border-primary-200/50"
           >
             <span>{data.sectionLabel}</span>
           </motion.div>

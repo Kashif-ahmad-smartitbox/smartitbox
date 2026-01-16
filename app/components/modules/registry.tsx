@@ -149,6 +149,21 @@ const TechnologyInnovationSection = dynamic(
   }
 );
 
+const TeamSection = dynamic(() => import("@/app/components/TeamSection"), {
+  ssr: true,
+});
+
+const CareerSection = dynamic(() => import("@/app/components/CareerSection"), {
+  ssr: true,
+});
+
+const DynamicHTMLSection = dynamic(
+  () => import("@/app/components/DynamicHTMLSection"),
+  {
+    ssr: true,
+  }
+);
+
 export type ModuleComponentProps = {
   data: any;
 };
@@ -157,15 +172,18 @@ const registry: Record<string, ComponentType<ModuleComponentProps>> = {
   hero: Hero,
   footer: Footer,
   header: Header,
-  herosection: HeroSection,
   blogsection: BlogSection,
+  herosection: HeroSection,
+  teamsection: TeamSection,
   aboutsection: AboutSection,
   resources: ResourcesSection,
+  careersection: CareerSection,
   contactsection: ContactSection,
   clientssection: ClientsSection,
   servicessection: ServicesSection,
   heroheadersection: HeroHeaderSection,
   corevaluessection: CoreValuesSection,
+  dynamichtmlsection: DynamicHTMLSection,
   storiesshowsection: StoriesShowSection,
   certificatesection: CertificateSection,
   workprocesssection: WorkProcessSection,

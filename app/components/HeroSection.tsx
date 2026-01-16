@@ -417,18 +417,31 @@ function HeroSection({ data }: HeroSectionProps) {
                 </h1>
               </motion.div>
 
-              {/* Description */}
-              {data.description.map((paragraph, index) => (
-                <motion.div key={index} variants={CHILD_VARIANTS}>
-                  <p
-                    className={`mt-${
-                      index === 0 ? "6" : "4"
-                    } text-base sm:text-lg leading-relaxed text-accent max-w-xl`}
-                  >
-                    {paragraph}
-                  </p>
-                </motion.div>
-              ))}
+              {data.description.map((paragraph, index) => {
+                const highlight = "Your Business Process automation Partner...";
+
+                const parts = paragraph.split(highlight);
+
+                return (
+                  <motion.div key={index} variants={CHILD_VARIANTS}>
+                    <p
+                      className={`mt-${
+                        index === 0 ? "6" : "4"
+                      } text-base sm:text-lg leading-relaxed text-gray-400 font-semibold max-w-xl`}
+                    >
+                      {parts.length > 1 ? (
+                        <>
+                          {parts[0]}
+                          <em className="italic text-gray-300">{highlight}</em>
+                          {parts[1]}
+                        </>
+                      ) : (
+                        paragraph
+                      )}
+                    </p>
+                  </motion.div>
+                );
+              })}
 
               {/* CTA ROW */}
               <motion.div
@@ -455,7 +468,7 @@ function HeroSection({ data }: HeroSectionProps) {
                   <span>{data.ctaButton.text}</span>
                   <ChevronRight
                     size={16}
-                    className="sm:size-[18px] group-hover:translate-x-1 transition-transform duration-200"
+                    className="sm:size-4.5 group-hover:translate-x-1 transition-transform duration-200"
                   />
                 </motion.a>
 
@@ -468,7 +481,7 @@ function HeroSection({ data }: HeroSectionProps) {
                     <span>{data.secondaryButton.text}</span>
                     <ArrowUpRight
                       size={16}
-                      className="sm:size-[18px] group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200"
+                      className="sm:size-4.5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-200"
                     />
                   </motion.a>
                 )}
@@ -561,7 +574,7 @@ function IconButton({ icon: Icon, animation, label }: IconButtonProps) {
     >
       <Icon
         size={18}
-        className="sm:size-[20px] text-primary-500 group-hover:text-primary-600 transition-colors duration-200"
+        className="sm:size-5 text-primary-500 group-hover:text-primary-600 transition-colors duration-200"
       />
     </motion.div>
   );

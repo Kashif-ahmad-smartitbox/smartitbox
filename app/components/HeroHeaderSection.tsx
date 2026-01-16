@@ -27,7 +27,7 @@ export default function HeroHeader({ data }: { data: any }) {
       ? "py-12"
       : variant === "left"
       ? "py-20 sm:py-28"
-      : "py-24 sm:py-32";
+      : "py-20 sm:py-28";
 
   return (
     <motion.section

@@ -276,7 +276,7 @@ function TechnologyInnovationSection({
   return (
     <section
       ref={sectionRef}
-      className="relative bg-primary-800 py-30 overflow-hidden"
+      className="relative bg-linear-to-l from-gray-700 to-accent py-30 overflow-hidden"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}

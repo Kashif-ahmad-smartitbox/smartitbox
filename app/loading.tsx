@@ -1,14 +1,11 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 
 interface LoadingProps {
   message?: string;
   size?: "sm" | "md" | "lg";
   fullScreen?: boolean;
   overlay?: boolean;
-  theme?: "red" | "blue" | "purple" | "green" | "custom";
-  customColor?: string;
 }
 
 export default function Loading({
@@ -16,339 +13,159 @@ export default function Loading({
   size = "md",
   fullScreen = true,
   overlay = true,
-  theme = "red",
-  customColor,
 }: LoadingProps) {
-  const colorConfig = {
-    red: {
-      primary: "#fed50a",
-      secondary: "oklch(52% 0.03 255)",
-      gradient: "from-primary-500 to-primary-600",
-    },
-    blue: {
-      primary: "#3b82f6",
-      secondary: "#93c5fd",
-      gradient: "from-blue-500 to-blue-600",
-    },
-    purple: {
-      primary: "#8b5cf6",
-      secondary: "#c4b5fd",
-      gradient: "from-purple-500 to-purple-600",
-    },
-    green: {
-      primary: "#10b981",
-      secondary: "#a7f3d0",
-      gradient: "from-emerald-500 to-emerald-600",
-    },
-    custom: {
-      primary: customColor || "#3b82f6",
-      secondary: customColor ? `${customColor}80` : "#93c5fd",
-      gradient: customColor
-        ? `from-[${customColor}] to-[${customColor}]`
-        : "from-blue-500 to-blue-600",
-    },
-  };
-
   const sizeConfig = {
-    sm: {
-      loader: "w-8 h-8",
-      text: "text-sm",
-      spacing: "mt-2",
-      messageSize: "text-xs",
-    },
-    md: {
-      loader: "w-12 h-12",
-      text: "text-base",
-      spacing: "mt-3",
-      messageSize: "text-sm",
-    },
-    lg: {
-      loader: "w-16 h-16",
-      text: "text-lg",
-      spacing: "mt-4",
-      messageSize: "text-base",
-    },
+    sm: { container: "p-2", spinner: "h-4 w-4", text: "text-xs" },
+    md: { container: "p-3", spinner: "h-6 w-6", text: "text-sm" },
+    lg: { container: "p-4", spinner: "h-8 w-8", text: "text-base" },
   };
 
-  const currentColor = colorConfig[theme];
-  const currentSize = sizeConfig[size];
+  const { container, spinner, text } = sizeConfig[size];
 
-  const containerClasses = `${fullScreen ? "fixed inset-0" : "relative"} ${
-    overlay ? "bg-black/10 backdrop-blur-sm" : ""
-  }`;
-
-  return (
-    <div className={containerClasses}>
-      <div className="absolute inset-0 flex flex-col items-center justify-center">
-        {/* Floating Background Particles */}
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(15)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute rounded-full opacity-20"
+  const LoadingContent = () => (
+    <>
+      {/* Enhanced Top Progress Bar - Red Theme */}
+      <div className="absolute left-0 right-0 top-0 z-10">
+        <div className="h-1 w-full overflow-hidden bg-gradient-to-r from-red-100 via-red-300 to-red-100">
+          <div className="h-full w-full relative overflow-hidden">
+            <div
+              className="h-full w-1/4 bg-gradient-to-r from-transparent via-primary-500 to-transparent animate-[shimmer_1.5s_ease-in-out_infinite]"
               style={{
-                backgroundColor: currentColor.secondary,
-                width: Math.random() * 8 + 4,
-                height: Math.random() * 8 + 4,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0.1, 0.3, 0.1],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: Math.random() * 3 + 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-                ease: "easeInOut",
+                background:
+                  "linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.8), transparent)",
               }}
             />
-          ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Enhanced Centered Content */}
+      <div
+        className={`z-20 rounded-2xl bg-white/95 backdrop-blur-md border border-gray-200/50 ${container} shadow-xl flex items-center gap-3`}
+      >
+        {/* Modern Spinner - Red Theme */}
+        <div className="relative">
+          <svg
+            className={`${spinner} animate-spin text-primary-600`}
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient
+                id="spinner-gradient"
+                x1="0%"
+                y1="0%"
+                x2="100%"
+                y2="100%"
+              >
+                <stop offset="0%" stopColor="currentColor" stopOpacity="0.3" />
+                <stop offset="50%" stopColor="currentColor" stopOpacity="0.8" />
+                <stop
+                  offset="100%"
+                  stopColor="currentColor"
+                  stopOpacity="0.3"
+                />
+              </linearGradient>
+            </defs>
+            <circle
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="url(#spinner-gradient)"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+            />
+            <path
+              d="M12 2a10 10 0 0 1 10 10"
+              stroke="currentColor"
+              strokeWidth="3"
+              fill="none"
+              strokeLinecap="round"
+              className="text-primary-600"
+            />
+          </svg>
+
+          {/* Pulsing dot - Red */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-1 h-1 bg-primary-600 rounded-full animate-pulse" />
+          </div>
         </div>
 
-        {/* Main Loading Container */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3 }}
-          className="relative flex flex-col items-center justify-center p-8 rounded-2xl bg-white/90 backdrop-blur-lg border border-gray-100 shadow-2xl shadow-black/5"
-        >
-          {/* Animated Rings */}
-          <div className="relative flex items-center justify-center">
-            {/* Outer Ring */}
-            <motion.div
-              className={`absolute ${currentSize.loader} rounded-full border-4 border-transparent`}
-              style={{
-                borderTopColor: currentColor.primary,
-                borderRightColor: currentColor.secondary + "40",
-                borderBottomColor: currentColor.secondary + "40",
-                borderLeftColor: currentColor.secondary + "40",
-              }}
-              animate={{
-                rotate: 360,
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            />
+        <span className={`font-medium text-gray-700 ${text}`}>{message}</span>
+      </div>
 
-            {/* Middle Ring */}
-            <motion.div
-              className={`absolute ${currentSize.loader} rounded-full border-4 border-transparent`}
-              style={{
-                borderTopColor: currentColor.secondary + "80",
-                borderRightColor: currentColor.primary,
-                borderBottomColor: currentColor.secondary + "80",
-                borderLeftColor: currentColor.secondary + "80",
-              }}
-              animate={{
-                rotate: -360,
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "linear",
-                delay: 0.1,
-              }}
-            />
-
-            {/* Inner Ring with Pulse Effect */}
-            <motion.div
-              className={`${currentSize.loader} rounded-full flex items-center justify-center`}
-              style={{
-                background: `radial-gradient(circle, ${currentColor.secondary}80 0%, transparent 70%)`,
-              }}
-              animate={{
-                scale: [1, 1.1, 1],
-                opacity: [0.7, 1, 0.7],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              {/* Central Dot */}
-              <motion.div
-                className="w-3 h-3 rounded-full"
-                style={{ backgroundColor: currentColor.primary }}
-                animate={{
-                  scale: [1, 1.5, 1],
-                  boxShadow: [
-                    `0 0 0 0 ${currentColor.primary}40`,
-                    `0 0 0 10px ${currentColor.primary}00`,
-                    `0 0 0 0 ${currentColor.primary}40`,
-                  ],
-                }}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-              />
-            </motion.div>
-
-            {/* Floating Orbs */}
-            {[...Array(4)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute rounded-full"
-                style={{
-                  backgroundColor: currentColor.primary,
-                  width:
-                    currentSize.loader === "w-8 h-8"
-                      ? 6
-                      : currentSize.loader === "w-12 h-12"
-                      ? 8
-                      : 10,
-                  height:
-                    currentSize.loader === "w-8 h-8"
-                      ? 6
-                      : currentSize.loader === "w-12 h-12"
-                      ? 8
-                      : 10,
-                }}
-                initial={{
-                  x: 0,
-                  y:
-                    currentSize.loader === "w-8 h-8"
-                      ? -20
-                      : currentSize.loader === "w-12 h-12"
-                      ? -30
-                      : -40,
-                  opacity: 0,
-                }}
-                animate={{
-                  x: [
-                    0,
-                    currentSize.loader === "w-8 h-8"
-                      ? 20
-                      : currentSize.loader === "w-12 h-12"
-                      ? 30
-                      : 40,
-                    0,
-                    currentSize.loader === "w-8 h-8"
-                      ? -20
-                      : currentSize.loader === "w-12 h-12"
-                      ? -30
-                      : -40,
-                    0,
-                  ],
-                  y: [
-                    currentSize.loader === "w-8 h-8"
-                      ? -20
-                      : currentSize.loader === "w-12 h-12"
-                      ? -30
-                      : -40,
-                    0,
-                    currentSize.loader === "w-8 h-8"
-                      ? 20
-                      : currentSize.loader === "w-12 h-12"
-                      ? 30
-                      : 40,
-                    0,
-                    currentSize.loader === "w-8 h-8"
-                      ? -20
-                      : currentSize.loader === "w-12 h-12"
-                      ? -30
-                      : -40,
-                  ],
-                  opacity: [0, 1, 1, 1, 0],
-                  scale: [0, 1, 1, 1, 0],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  delay: i * 0.5,
-                  ease: "linear",
-                }}
-              />
-            ))}
-          </div>
-
-          {/* Loading Text with Typing Animation */}
-          <div className={`${currentSize.spacing} flex items-center gap-2`}>
-            <motion.div
-              className={`${currentSize.messageSize} font-medium text-gray-700`}
-              animate={{
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              {message}
-            </motion.div>
-            <div className="flex gap-1">
-              {[...Array(3)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  className="w-1 h-1 rounded-full"
-                  style={{ backgroundColor: currentColor.primary }}
-                  animate={{
-                    y: [0, -4, 0],
-                    opacity: [0.3, 1, 0.3],
-                  }}
-                  transition={{
-                    duration: 0.6,
-                    repeat: Infinity,
-                    delay: i * 0.2,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Progress Bar (Optional) */}
-          <motion.div
-            className={`${currentSize.spacing} w-32 h-1 bg-gray-100 rounded-full overflow-hidden`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            <motion.div
-              className="h-full rounded-full"
-              style={{
-                background: `linear-gradient(90deg, ${currentColor.secondary}, ${currentColor.primary})`,
-              }}
-              initial={{ x: "-100%" }}
-              animate={{ x: "100%" }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-          </motion.div>
-        </motion.div>
-
-        {/* Background Glow Effect */}
-        <motion.div
-          className="absolute inset-0 -z-10 flex items-center justify-center"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
+      {/* Floating particles - Red Theme */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(3)].map((_, i) => (
           <div
-            className="w-64 h-64 rounded-full blur-3xl"
+            key={i}
+            className="absolute w-2 h-2 bg-red-400/30 rounded-full animate-float"
             style={{
-              background: `radial-gradient(circle, ${currentColor.secondary}40 0%, transparent 70%)`,
+              left: `${20 + i * 30}%`,
+              top: `${30 + i * 20}%`,
+              animationDelay: `${i * 0.5}s`,
+              animationDuration: `${3 + i}s`,
             }}
           />
-        </motion.div>
+        ))}
       </div>
+
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%) skewX(-15deg);
+          }
+          100% {
+            transform: translateX(200%) skewX(-15deg);
+          }
+        }
+
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px) scale(1);
+            opacity: 0.3;
+          }
+          50% {
+            transform: translateY(-20px) scale(1.1);
+            opacity: 0.6;
+          }
+        }
+
+        .animate-float {
+          animation: float ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .animate-\\[shimmer_1.5s_ease-in-out_infinite\\],
+          .animate-spin,
+          .animate-pulse,
+          .animate-float {
+            animation: none;
+          }
+        }
+      `}</style>
+    </>
+  );
+
+  if (!fullScreen) {
+    return (
+      <div aria-hidden="true" className="relative inline-block">
+        <LoadingContent />
+      </div>
+    );
+  }
+
+  return (
+    <div
+      aria-hidden="true"
+      className={`fixed inset-0 z-[1000] flex items-center justify-center ${
+        overlay ? "bg-white/90 backdrop-blur-lg" : "bg-transparent"
+      }`}
+    >
+      <LoadingContent />
     </div>
   );
 }

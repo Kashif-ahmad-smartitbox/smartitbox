@@ -157,12 +157,6 @@ function ProcessMethodologySection({ data }: ProcessMethodologySectionProps) {
       ref={sectionRef}
       className="relative bg-linear-to-b from-white via-gray-50/30 to-white py-32 overflow-hidden"
     >
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary-100/10 rounded-full blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-primary-300/5 rounded-full blur-3xl" />
-      </div>
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -375,7 +369,7 @@ function ProcessMethodologySection({ data }: ProcessMethodologySectionProps) {
                           damping: SPRING_CONFIG.damping,
                           mass: SPRING_CONFIG.mass,
                         }}
-                        className={`w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 ${
+                        className={`w-14 h-14 rounded-xl flex items-center justify-center shrink-0 ${
                           isActive
                             ? "bg-linear-to-br from-primary-500 to-primary-600 text-white"
                             : isCompleted

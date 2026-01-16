@@ -90,7 +90,7 @@ function ServicesCardsSection({ data }: ServicesCardsSectionProps) {
       title: "Web Design",
       description:
         "Web design usually refers to the user experience aspects of website development rather than software development.",
-      bgColor: "bg-primary-50",
+      bgColor: "bg-primary-300",
     },
     {
       title: "Digital Transformation",
@@ -146,7 +146,7 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
     imageAlt,
     title = "",
     description = "",
-    bgColor = "bg-primary-100",
+    bgColor = "bg-primary-50",
   } = service;
 
   return (
@@ -164,7 +164,7 @@ function ServiceCard({ service, index, isInView }: ServiceCardProps) {
           mass: SPRING_CONFIG.mass,
         },
       }}
-      className={`group relative rounded-2xl ${bgColor} p-6 lg:p-8 overflow-hidden`}
+      className={`group relative rounded-2xl ${bgColor} border border-gray-50 p-6 lg:p-8 overflow-hidden`}
     >
       {/* Hover effect background */}
       <motion.div

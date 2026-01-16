@@ -100,6 +100,16 @@ interface WorkProcessSectionProps {
   };
 }
 
+const stepsCardsColors = [
+  "bg-primary-400",
+  "bg-rose-500",
+  "bg-rose-600",
+  "bg-rose-700 ",
+  "bg-rose-800",
+  "bg-rose-900",
+  "bg-rose-200",
+];
+
 function WorkProcessSection({ data }: WorkProcessSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const controls = useAnimation();
@@ -425,7 +435,7 @@ function WorkProcessSection({ data }: WorkProcessSectionProps) {
               {/* Section label */}
               <motion.div
                 variants={CHILD_VARIANTS}
-                className="inline-flex items-center gap-3 mb-8 px-4 py-2.5 bg-linear-to-r from-primary-50 to-primary-100 text-secondary-900 text-sm font-semibold rounded-lg border border-primary-200/50"
+                className="inline-flex items-center gap-3 mb-8 px-4 py-2.5 bg-linear-to-l from-rose-200 via-primary-50 to-rose-200 text-secondary-900 text-sm font-semibold rounded-lg border border-primary-200/50"
               >
                 <span>{data.sectionLabel}</span>
               </motion.div>
@@ -476,7 +486,9 @@ function WorkProcessSection({ data }: WorkProcessSectionProps) {
                       }}
                       className="group h-full"
                     >
-                      <div className="bg-white rounded-2xl p-6 border border-gray-200 transition-all duration-300 h-full relative overflow-hidden">
+                      <div
+                        className={`${stepsCardsColors[index]} rounded-2xl p-6 border border-gray-200 transition-all duration-300 h-full relative overflow-hidden`}
+                      >
                         {/* Background effect on hover */}
                         <motion.div
                           initial={{ opacity: 0 }}

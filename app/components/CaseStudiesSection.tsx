@@ -217,7 +217,7 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
   }
 
   return (
-    <section className="relative py-5 lg:py-30 bg-linear-to-b from-white via-primary-50/30 to-white overflow-hidden">
+    <section className="relative py-5 lg:py-10 bg-linear-to-b from-white via-primary-50/30 to-white overflow-hidden">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.header
@@ -230,7 +230,7 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
           {data?.subtitle && (
             <motion.p
               variants={CHILD_VARIANTS}
-              className="inline-flex items-center gap-2 mb-6 px-4 py-2.5 bg-linear-to-r from-primary-50 to-primary-100 text-secondary-900 text-sm font-semibold rounded-lg border border-primary-200/50"
+              className="inline-flex items-center gap-2 mb-6 px-4 py-2.5 bg-linear-to-l from-rose-200 via-primary-50 to-rose-200 text-secondary-900 text-sm font-semibold rounded-lg border border-primary-200/50"
             >
               {data.subtitle}
             </motion.p>

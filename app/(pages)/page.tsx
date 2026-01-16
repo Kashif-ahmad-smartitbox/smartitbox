@@ -5,6 +5,7 @@ import {
   getPageWithContent,
   PageWithContentResponse,
 } from "@/services/modules/pageModule";
+import TeamPage from "../components/TeamSection";
 
 export async function generateMetadata(): Promise<Metadata> {
   try {

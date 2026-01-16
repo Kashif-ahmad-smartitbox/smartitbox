@@ -220,7 +220,7 @@ function ClientsSection({ data }: ClientsSectionProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-white py-5 lg:py-24 overflow-hidden"
+      className="relative bg-primary-200 py-5 lg:py-24 overflow-hidden"
     >
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* HEADER SECTION */}
@@ -247,7 +247,7 @@ function ClientsSection({ data }: ClientsSectionProps) {
               className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight text-gray-900 mb-6"
             >
               <span className="relative inline-block mr-3">
-                <span className="relative z-10 text-primary-500">
+                <span className="relative z-10 text-primary-600">
                   {data.clientCount}
                 </span>
                 <motion.span
@@ -264,7 +264,7 @@ function ClientsSection({ data }: ClientsSectionProps) {
               {data.headingPart1}
               <br />
               <span className="relative inline-block">
-                <span className="relative z-10 text-primary-500 bg-clip-text">
+                <span className="relative z-10 text-primary-600 bg-clip-text">
                   {data.headingPart2}
                 </span>
                 <motion.span
