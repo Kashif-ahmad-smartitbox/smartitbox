@@ -114,40 +114,40 @@ const LeadershipTeamSection = dynamic(
   }
 );
 
-const CultureEnvironmentSection = dynamic(
-  () => import("@/app/components/CultureEnvironmentSection"),
-  {
-    ssr: true,
-  }
-);
+// const CultureEnvironmentSection = dynamic(
+//   () => import("@/app/components/CultureEnvironmentSection"),
+//   {
+//     ssr: true,
+//   }
+// );
 
-const AchievementsSection = dynamic(
-  () => import("@/app/components/AchievementsSection"),
-  {
-    ssr: true,
-  }
-);
+// const AchievementsSection = dynamic(
+//   () => import("@/app/components/AchievementsSection"),
+//   {
+//     ssr: true,
+//   }
+// );
 
-const ProcessMethodologySection = dynamic(
-  () => import("@/app/components/ProcessMethodologySection"),
-  {
-    ssr: true,
-  }
-);
+// const ProcessMethodologySection = dynamic(
+//   () => import("@/app/components/ProcessMethodologySection"),
+//   {
+//     ssr: true,
+//   }
+// );
 
-const CommunityImpactSection = dynamic(
-  () => import("@/app/components/CommunityImpactSection"),
-  {
-    ssr: true,
-  }
-);
+// const CommunityImpactSection = dynamic(
+//   () => import("@/app/components/CommunityImpactSection"),
+//   {
+//     ssr: true,
+//   }
+// );
 
-const TechnologyInnovationSection = dynamic(
-  () => import("@/app/components/TechnologyInnovationSection"),
-  {
-    ssr: true,
-  }
-);
+// const TechnologyInnovationSection = dynamic(
+//   () => import("@/app/components/TechnologyInnovationSection"),
+//   {
+//     ssr: true,
+//   }
+// );
 
 export type ModuleComponentProps = {
   data: any;
@@ -170,14 +170,14 @@ const registry: Record<string, ComponentType<ModuleComponentProps>> = {
   certificatesection: CertificateSection,
   workprocesssection: WorkProcessSection,
   casestudiessection: CaseStudiesSection,
-  achievementssection: AchievementsSection,
+  // achievementssection: AchievementsSection,
   storytimelinesection: StoryTimelineSection,
   coreofferingssection: CoreOfferingsSection,
   leadershipteamsection: LeadershipTeamSection,
-  communityimpactsection: CommunityImpactSection,
-  processmethodologysection: ProcessMethodologySection,
-  cultureenvironmentsection: CultureEnvironmentSection,
-  technologyinnovationsection: TechnologyInnovationSection,
+  // communityimpactsection: CommunityImpactSection,
+  // processmethodologysection: ProcessMethodologySection,
+  // cultureenvironmentsection: CultureEnvironmentSection,
+  // technologyinnovationsection: TechnologyInnovationSection,
 };
 
 export default registry;
