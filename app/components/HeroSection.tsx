@@ -202,7 +202,7 @@ function HeroSection({ data }: HeroSectionProps) {
               {/* Top Label */}
               <motion.div
                 variants={CHILD_VARIANTS}
-                className="inline-flex items-center gap-2 mb-4 px-3 py-2 md:px-4 md:py-2.5 bg-linear-to-r from-primary-50 to-primary-100 text-secondary-900 text-xs sm:text-sm font-semibold rounded-lg border border-primary-200/50"
+                className="inline-flex items-center gap-2 mb-4 px-3 py-2 md:px-4 md:py-2.5 bg-linear-to-l from-rose-200 via-primary-50 to-rose-200 text-secondary-900 text-xs sm:text-sm font-semibold rounded-lg border border-primary-200/50"
               >
                 <span>{data.subtitle}</span>
               </motion.div>
@@ -282,13 +282,13 @@ function HeroSection({ data }: HeroSectionProps) {
                                   animate={isMainInView ? { opacity: 1 } : {}}
                                   transition={{ delay: index * 0.15 + 0.3 }}
                                 >
-                                  <span className="relative z-30 bg-linear-to-r from-primary-500 via-primary-500 to-primary-500 bg-clip-text text-transparent bg-[length:200%_100%]">
+                                  <span className="relative z-30 bg-linear-to-r from-primary-500 via-primary-500 to-primary-500 bg-clip-text text-transparent bg-size-[200%_100%]">
                                     {line}
                                   </span>
 
                                   {/* Continuous gradient animation */}
                                   <motion.div
-                                    className="absolute inset-0 bg-linear-to-r from-primary-500 via-primary-500 to-primary-500 bg-clip-text text-transparent bg-[length:200%_100%] opacity-0"
+                                    className="absolute inset-0 bg-linear-to-r from-primary-500 via-primary-500 to-primary-500 bg-clip-text text-transparent bg-size-[200%_100%] opacity-0"
                                     animate={
                                       isMainInView
                                         ? {
@@ -351,7 +351,7 @@ function HeroSection({ data }: HeroSectionProps) {
                           ) : (
                             // Regular text with subtle continuous animation
                             <motion.span
-                              className="inline-block relative"
+                              className="inline-block relative text-accent"
                               initial={{ opacity: 0, filter: "blur(4px)" }}
                               animate={
                                 isMainInView
@@ -423,7 +423,7 @@ function HeroSection({ data }: HeroSectionProps) {
                   <p
                     className={`mt-${
                       index === 0 ? "6" : "4"
-                    } text-base sm:text-lg leading-relaxed text-gray-600 max-w-xl`}
+                    } text-base sm:text-lg leading-relaxed text-accent max-w-xl`}
                   >
                     {paragraph}
                   </p>
@@ -656,11 +656,11 @@ function AnimatedStat({ number, label, isInView, delay = 0 }: StatProps) {
       className="group relative p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white/50 backdrop-blur-sm border border-gray-100 hover:shadow-md transition-shadow"
     >
       <div className="relative">
-        <div className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-1 sm:mb-2 min-h-8 sm:min-h-10 flex items-center justify-center">
+        <div className="text-lg sm:text-xl md:text-2xl font-bold text-accent mb-1 sm:mb-2 min-h-8 sm:min-h-10 flex items-center justify-center">
           {isInView ? <Counter from={0} to={number} /> : "0+"}
         </div>
         <div className="h-0.5 w-8 sm:w-10 md:w-12 bg-linear-to-r from-primary-400 to-primary-300 rounded-full mx-auto mb-2 sm:mb-3" />
-        <p className="text-xs sm:text-sm font-medium text-gray-600 text-center line-clamp-2">
+        <p className="text-xs sm:text-sm font-medium text-accent text-center line-clamp-2">
           {label}
         </p>
       </div>

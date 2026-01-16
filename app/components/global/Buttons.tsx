@@ -42,7 +42,7 @@ export function Button({
 }: ButtonProps) {
   // Base styles
   const baseStyles =
-    "group relative inline-flex items-center justify-center font-semibold transition-all duration-300 overflow-hidden rounded-xl border";
+    "group relative inline-flex items-center justify-center font-semibold transition-all duration-300 overflow-hidden rounded-xl";
 
   // Size variants
   const sizeStyles = {
@@ -51,14 +51,12 @@ export function Button({
     lg: "px-8 py-4 text-base gap-3",
   };
 
-  // Color variants - Improved with better defaults
   const variantStyles = {
     primary:
-      "bg-gradient-to-br from-primary-500 to-primary-600 text-white border-primary-600 shadow-lg hover:shadow-xl hover:scale-105",
+      "bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg hover:shadow-xl hover:scale-105",
     secondary:
-      "bg-gradient-to-br from-secondary-500 to-secondary-600 text-white border-secondary-600 shadow-lg hover:shadow-xl hover:scale-105",
-    outline:
-      "bg-transparent text-gray-900 border-gray-300 hover:border-primary-400 hover:shadow-lg hover:bg-gray-50",
+      "bg-gradient-to-br from-secondary-500 to-secondary-600 text-white shadow-lg hover:shadow-xl hover:scale-105",
+    outline: "bg-transparent text-gray-900 hover:shadow-lg hover:bg-gray-50",
     ghost:
       "bg-transparent text-gray-700 border-transparent hover:bg-gray-100 hover:text-gray-900",
   };

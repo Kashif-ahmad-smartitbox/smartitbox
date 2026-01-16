@@ -74,7 +74,6 @@ function CertificateSection({ data }: CertificateSectionProps) {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 mb-6 px-4 py-2.5 bg-linear-to-r from-primary-50 to-primary-100 text-secondary-900 text-sm font-semibold rounded-lg border border-primary-200/50"
           >
-            <Award className="w-4 h-4" />
             <span>{data.sectionLabel}</span>
           </motion.div>
 
@@ -85,8 +84,7 @@ function CertificateSection({ data }: CertificateSectionProps) {
             transition={{ delay: 0.2 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900"
           >
-            {data.headingPart1}
-            <br />
+            {data.headingPart1}{" "}
             <span className="relative inline-block">
               <span className="relative z-10 text-primary-500 bg-clip-text">
                 {data.headingPart2}
