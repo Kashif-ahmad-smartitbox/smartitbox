@@ -132,7 +132,7 @@ function LeadershipTeamSection({ data }: LeadershipTeamSectionProps) {
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {data.team.map((member, index) => {
             const isSelected = selectedMember === member.id;
             const delay = 0.3 + index * 0.1;

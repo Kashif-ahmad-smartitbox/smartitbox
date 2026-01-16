@@ -196,18 +196,6 @@ function CoreValuesSection({ data }: CoreValuesSectionProps) {
                   }}
                   className={`h-full p-8 rounded-2xl border ${colors.card} relative overflow-hidden`}
                 >
-                  {/* Background Effect */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={
-                      isInView
-                        ? { opacity: 1, scale: 1 }
-                        : { opacity: 0, scale: 0.95 }
-                    }
-                    transition={{ delay }}
-                    className="absolute -inset-2 bg-linear-to-r from-primary-500/5 to-primary-300/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  />
-
                   {/* Icon */}
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
@@ -220,19 +208,6 @@ function CoreValuesSection({ data }: CoreValuesSectionProps) {
                     className={`relative w-16 h-16 rounded-2xl ${colors.icon} flex items-center justify-center mb-6 border border-primary-200/50`}
                   >
                     <IconComponent size={32} />
-                    {/* Icon Accent */}
-                    <motion.div
-                      animate={{
-                        scale: [1, 1.2, 1],
-                        opacity: [0.3, 0.1, 0.3],
-                      }}
-                      transition={{
-                        duration: 3,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      className={`absolute inset-0 rounded-2xl bg-linear-to-br ${colors.accent} blur-md`}
-                    />
                   </motion.div>
 
                   {/* Title */}
