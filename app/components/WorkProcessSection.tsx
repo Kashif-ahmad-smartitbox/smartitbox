@@ -101,13 +101,13 @@ interface WorkProcessSectionProps {
 }
 
 const stepsCardsColors = [
-  "bg-primary-400",
-  "bg-rose-500",
-  "bg-rose-600",
-  "bg-rose-700 ",
-  "bg-rose-800",
-  "bg-rose-900",
-  "bg-rose-200",
+  "bg-gray-100",
+  "bg-gray-100",
+  "bg-gray-100",
+  "bg-gray-100",
+  "bg-gray-100",
+  "bg-gray-100",
+  "bg-gray-100",
 ];
 
 function WorkProcessSection({ data }: WorkProcessSectionProps) {
@@ -188,8 +188,8 @@ function WorkProcessSection({ data }: WorkProcessSectionProps) {
                         node === 0
                           ? "top-1/4"
                           : node === 1
-                          ? "top-1/2"
-                          : "top-3/4"
+                            ? "top-1/2"
+                            : "top-3/4"
                       }`}
                     >
                       <div className="w-1.5 h-1.5 rounded-full bg-primary-400 mx-auto mt-0.5" />
@@ -570,8 +570,8 @@ function WorkProcessSection({ data }: WorkProcessSectionProps) {
                             {index === 0
                               ? "Start"
                               : index === data.steps.length - 1
-                              ? "Final"
-                              : `Step ${index + 1}`}
+                                ? "Final"
+                                : `Step ${index + 1}`}
                           </div>
                         </div>
                       </div>
