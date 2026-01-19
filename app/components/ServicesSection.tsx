@@ -114,7 +114,7 @@ function ServicesSection({ data }: ServicesSectionProps) {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-linear-to-l from-rose-700 to-rose-700 py-10 lg:py-24 overflow-hidden"
+      className="relative bg-linear-to-l from-primary-700 to-primary-400 py-10 lg:py-24 overflow-hidden"
     >
       {/* STATS SECTION */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">

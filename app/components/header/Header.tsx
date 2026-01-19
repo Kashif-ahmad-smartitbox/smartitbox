@@ -65,9 +65,7 @@ export default function Header({ data }: HeaderProps) {
     : "absolute top-0";
 
   // Updated: White background with black text when scrolled
-  const headerBg = scrolled
-    ? "bg-white shadow-md" // Changed to white background
-    : "bg-transparent";
+  const headerBg = scrolled ? "bg-white shadow-md" : "bg-transparent";
 
   return (
     <header className={`${headerBase} ${headerPosition} ${headerBg}`}>
@@ -104,7 +102,7 @@ export default function Header({ data }: HeaderProps) {
                     isOpen={openMenu === item.key}
                     onToggle={() =>
                       handleMenuInteraction(
-                        openMenu === item.key ? null : item.key
+                        openMenu === item.key ? null : item.key,
                       )
                     }
                     onMouseEnter={() => setIsHovering(true)}
@@ -254,7 +252,7 @@ const MegaMenuContainer = React.forwardRef<
             : "opacity-0 -translate-y-4 py-0 pointer-events-none"
         }`}
       >
-        <div className="rounded-3xl border border-gray-200/60 bg-white/95 backdrop-blur-xl p-2 shadow-2xl">
+        <div className="rounded-3xl border border-gray-200/60 bg-white/95 backdrop-blur-xl p-2">
           {children}
         </div>
       </div>

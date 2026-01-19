@@ -82,7 +82,7 @@ function Blogs({ data }: BlogsProps) {
 
         // Update pagination state
         const totalPages = Math.ceil(
-          (blogsResponse.total || 0) / BLOGS_PER_PAGE
+          (blogsResponse.total || 0) / BLOGS_PER_PAGE,
         );
         setPagination({
           currentPage: page,
@@ -98,7 +98,7 @@ function Blogs({ data }: BlogsProps) {
         setLoading(false);
       }
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -114,7 +114,7 @@ function Blogs({ data }: BlogsProps) {
         blogSection?.scrollIntoView({ behavior: "smooth" });
       }
     },
-    [pagination.totalPages, searchQuery, fetchPageData]
+    [pagination.totalPages, searchQuery, fetchPageData],
   );
 
   const clearSearch = () => setSearchQuery("");
@@ -632,7 +632,7 @@ const Pagination: React.FC<{
               >
                 {page}
               </button>
-            )
+            ),
           )}
         </div>
 
