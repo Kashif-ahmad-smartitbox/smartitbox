@@ -14,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     const baseUrl =
       process.env.NEXT_PUBLIC_SITE_URL || "https://www.smartitbox.in";
     const canonicalUrl = `${baseUrl}/`;
-    const ogImage = "/logo.png";
+    const ogImage = "/opengraph.webp";
     const defaultTitle = "Home | SmartITbox";
     const defaultDescription =
       "Welcome to smartitbox - Your Business Process automation Partner.";
@@ -160,7 +160,7 @@ export default async function HomePage() {
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL || "https://www.smartitbox.in";
   const canonical = `${baseUrl}/`;
-  const ogImage = "/logo.png";
+  const ogImage = "/opengraph.webp";
 
   const defaultTitle = "Home | smartitbox";
   const defaultDescription =
