@@ -201,7 +201,7 @@ export default function ServicesHeroHeader({
                   transition={{ delay: 0.6, duration: 0.8 }}
                   className="relative block mt-4"
                 >
-                  <span className="relative z-10 text-primary-400">
+                  <span className="relative z-10 bg-linear-to-r from-primary-500 to-orange-500 bg-clip-text text-transparent">
                     {highlight}
                   </span>
                 </motion.span>
@@ -255,7 +255,7 @@ export default function ServicesHeroHeader({
                       stiffness: 300,
                       damping: 25,
                     }}
-                    className="group relative px-8 py-4 rounded-full text-base font-semibold text-white bg-linear-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 shadow-lg shadow-primary-500/25 overflow-hidden inline-flex items-center gap-2"
+                    className="group relative px-8 py-4 rounded-full text-base font-semibold text-white bg-linear-to-r from-primary-500 to-orange-500 hover:from-primary-600 hover:to-primary-700 shadow-lg shadow-primary-500/25 overflow-hidden inline-flex items-center gap-2"
                   >
                     <span className="relative z-10">{primary.text}</span>
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -291,7 +291,7 @@ export default function ServicesHeroHeader({
                   <ul className="space-y-4 mb-8">
                     {rightCard.bullets.map((b, i) => (
                       <li className="flex items-center gap-4" key={i}>
-                        <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-linear-to-r from-primary-500 to-primary-600 text-white text-xs font-bold shrink-0">
+                        <span className="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-linear-to-r from-primary-500 to-orange-500 text-white text-xs font-bold shrink-0">
                           ✓
                         </span>
                         <span className="text-sm text-gray-700 leading-relaxed">
@@ -309,7 +309,7 @@ export default function ServicesHeroHeader({
                       aria-label={rightCard.cta.ariaLabel ?? rightCard.cta.text}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group relative px-6 py-3 rounded-full text-sm font-semibold text-white bg-linear-to-r from-primary-500 to-primary-600 shadow-xl hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-300 overflow-hidden inline-flex items-center gap-2"
+                      className="group relative px-6 py-3 rounded-full text-sm font-semibold text-white bg-linear-to-r from-primary-500 to-orange-500 shadow-xl hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-300 overflow-hidden inline-flex items-center gap-2"
                     >
                       <span className="relative z-10">
                         {rightCard.cta.text}

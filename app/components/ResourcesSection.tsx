@@ -287,7 +287,7 @@ export default function Resources({ data }: ResourcesProps) {
           >
             {data.headingPart1}{" "}
             <span className="relative inline-block">
-              <span className="relative z-10 text-primary-500 bg-clip-text">
+              <span className="relative z-10 bg-linear-to-r from-primary-500 to-orange-500 bg-clip-text text-transparent">
                 {data.headingPart2}
               </span>
               <motion.span
@@ -363,7 +363,7 @@ export default function Resources({ data }: ResourcesProps) {
               damping: SPRING_CONFIG.damping,
               mass: SPRING_CONFIG.mass,
             }}
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-primary-500 text-white text-base font-semibold hover:bg-primary-600 transition-colors shadow-lg hover:shadow-xl"
+            className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-linear-to-r from-primary-500 to-orange-500 text-white text-base font-semibold hover:bg-primary-600 transition-colors shadow-lg hover:shadow-xl"
           >
             <span>{data.ctaButton.text}</span>
             <ArrowRight className="w-5 h-5" />

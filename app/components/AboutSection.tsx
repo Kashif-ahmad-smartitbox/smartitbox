@@ -128,7 +128,7 @@ function AboutSection({ data }: AboutSectionProps) {
                   {data.headingPart1}
                   <br />
                   <span className="relative inline-block">
-                    <span className="relative z-10 text-primary-500 bg-clip-text">
+                    <span className="relative z-10 bg-linear-to-r from-primary-500 to-orange-500 bg-clip-text text-transparent">
                       {data.headingPart2}
                     </span>
                     <motion.span
@@ -180,9 +180,9 @@ function AboutSection({ data }: AboutSectionProps) {
                           damping: SPRING_CONFIG.damping,
                           mass: SPRING_CONFIG.mass,
                         }}
-                        className="shrink-0 w-8 h-8 rounded-full bg-primary-100 flex items-center justify-center border border-primary-200/50"
+                        className="shrink-0 w-8 h-8 rounded-full bg-linear-to-r from-primary-500 to-orange-500 flex items-center justify-center border border-primary-200/50"
                       >
-                        <Check size={16} className="text-primary-500" />
+                        <Check size={16} className="text-white" />
                       </motion.div>
                       <span className="text-gray-700 group-hover:text-gray-900 transition-colors duration-200">
                         {feature}
@@ -215,7 +215,7 @@ function AboutSection({ data }: AboutSectionProps) {
                     damping: SPRING_CONFIG.damping,
                     mass: SPRING_CONFIG.mass,
                   }}
-                  className="group relative inline-flex items-center bg-linear-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-10 py-4 rounded-full font-semibold text-base shadow-lg shadow-primary-500/25 gap-3"
+                  className="group relative inline-flex items-center bg-linear-to-r from-primary-500 to-orange-500 hover:from-primary-600 hover:to-primary-700 text-white px-10 py-4 rounded-full font-semibold text-base shadow-lg shadow-primary-500/25 gap-3"
                 >
                   <span>{data.buttonLabel}</span>
                   <ArrowUpRight

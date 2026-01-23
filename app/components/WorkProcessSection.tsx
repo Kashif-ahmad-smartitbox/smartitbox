@@ -259,7 +259,7 @@ function WorkProcessSection({ data }: WorkProcessSectionProps) {
                   initial={{ width: 0, opacity: 0 }}
                   animate={{ width: "320px", opacity: 1 }}
                   transition={{ delay: 0.5, duration: 0.8 }}
-                  className="relative h-30 bg-linear-to-r from-primary-400 via-primary-500 to-primary-600 rounded-t-3xl mx-auto overflow-hidden"
+                  className="relative h-30 bg-linear-to-r from-primary-500 to-orange-500 rounded-t-3xl mx-auto overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-linear-to-b from-primary-400/40 via-primary-500/20 to-transparent" />
                   <div className="absolute top-4 left-8 text-white text-sm font-semibold">
@@ -446,7 +446,7 @@ function WorkProcessSection({ data }: WorkProcessSectionProps) {
                   {data.headingPart1}
                   <br />
                   <span className="relative inline-block">
-                    <span className="relative z-10 text-primary-500 bg-clip-text">
+                    <span className="relative z-10 bg-linear-to-r from-primary-500 to-orange-500 bg-clip-text text-transparent">
                       {data.headingPart2}
                     </span>
                     <motion.span
@@ -502,7 +502,7 @@ function WorkProcessSection({ data }: WorkProcessSectionProps) {
                           <div className="relative">
                             <motion.div
                               whileHover={{ rotate: 10, scale: 1.1 }}
-                              className="relative z-10 w-12 h-12 rounded-full bg-linear-to-br from-primary-400 to-primary-500 flex items-center justify-center font-bold text-white text-sm shadow-lg shadow-primary-500/25"
+                              className="relative z-10 w-12 h-12 rounded-full bg-linear-to-r from-primary-500 to-orange-500 flex items-center justify-center font-bold text-white text-sm shadow-lg shadow-primary-500/25"
                             >
                               {step.step}
                             </motion.div>

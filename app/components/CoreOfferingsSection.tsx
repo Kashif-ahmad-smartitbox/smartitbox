@@ -118,7 +118,7 @@ function CoreOfferingsSection({ data }: CoreOfferingsSectionProps) {
                 {data.headingPart1}
                 <br />
                 <span className="relative inline-block">
-                  <span className="relative z-10 text-primary-500 bg-clip-text">
+                  <span className="relative z-10 bg-linear-to-r from-primary-500 to-orange-500 bg-clip-text text-transparent">
                     {data.headingPart2}
                   </span>
                   <motion.span
@@ -203,7 +203,7 @@ function CoreOfferingsSection({ data }: CoreOfferingsSectionProps) {
                 damping: SPRING_CONFIG.damping,
                 mass: SPRING_CONFIG.mass,
               }}
-              className="mt-5 inline-flex items-center bg-primary-500 hover:bg-primary-600 text-white font-semibold px-10 py-4 rounded-full gap-2 group"
+              className="mt-5 inline-flex items-center bg-linear-to-r from-primary-500 to-orange-500 hover:bg-primary-600 text-white font-semibold px-10 py-4 rounded-full gap-2 group"
             >
               <span>{data.contactButton.text}</span>
               <ArrowUpRight
@@ -245,7 +245,7 @@ function CoreOfferingsSection({ data }: CoreOfferingsSectionProps) {
                         className="flex items-start gap-3 group-hover:text-gray-800 transition-colors duration-200"
                       >
                         <div className="shrink-0 w-6 h-6 rounded-full bg-primary-100 flex items-center justify-center mt-1">
-                          <div className="w-2 h-2 rounded-full bg-primary-500" />
+                          <div className="w-2 h-2 rounded-full bg-linear-to-r from-primary-500 to-orange-500" />
                         </div>
                         <span>{item}</span>
                       </motion.li>

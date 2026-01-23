@@ -130,7 +130,7 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
             publishedAt: story.publishedAt,
             tags: story.tags,
             body: story.body,
-          })
+          }),
         );
 
         setCaseStudies(transformedStudies);
@@ -148,12 +148,12 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
 
   const featured = useMemo(
     () => caseStudies.filter((c) => c.featured).slice(0, 3),
-    [caseStudies]
+    [caseStudies],
   );
 
   const others = useMemo(
     () => caseStudies.filter((c) => !c.featured),
-    [caseStudies]
+    [caseStudies],
   );
 
   const calculateReadingTime = (content: string) => {
@@ -285,7 +285,7 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
                   ) : (
                     <div
                       className={`w-full h-full bg-linear-to-br ${getGradientColor(
-                        index
+                        index,
                       )} flex items-center justify-center`}
                     >
                       <Briefcase className="w-12 h-12 text-white" />
@@ -296,7 +296,7 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
 
                   {f.featured && (
                     <div className="absolute top-4 left-4">
-                      <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-linear-to-r from-primary-500 to-primary-600 text-white shadow-lg">
+                      <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-linear-to-r from-primary-500 to-orange-500 text-white shadow-lg">
                         <Sparkles className="w-3 h-3" />
                         Featured
                       </span>
@@ -365,7 +365,7 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
                       damping: SPRING_CONFIG.damping,
                       mass: SPRING_CONFIG.mass,
                     }}
-                    className="group/btn relative mt-auto inline-flex items-center justify-center gap-2 px-5 py-3 bg-linear-to-r from-primary-500 to-primary-600 text-white font-semibold text-sm rounded-xl shadow-lg hover:shadow-xl overflow-hidden"
+                    className="group/btn relative mt-auto inline-flex items-center justify-center gap-2 px-5 py-3 bg-linear-to-r from-primary-500 to-orange-500 text-white font-semibold text-sm rounded-xl shadow-lg hover:shadow-xl overflow-hidden"
                   >
                     <span className="absolute inset-0 bg-linear-to-r from-primary-600 to-primary-600 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300" />
 
@@ -409,7 +409,7 @@ export default function CaseStudies({ data }: CaseStudiesProps) {
                   ) : (
                     <div
                       className={`w-full h-full bg-linear-to-br ${getGradientColor(
-                        index
+                        index,
                       )} flex items-center justify-center`}
                     >
                       <Briefcase className="w-10 h-10 text-white" />

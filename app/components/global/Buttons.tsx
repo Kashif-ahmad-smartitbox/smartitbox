@@ -53,7 +53,7 @@ export function Button({
 
   const variantStyles = {
     primary:
-      "bg-gradient-to-br from-primary-500 to-primary-600 text-white shadow-lg hover:shadow-xl hover:scale-105",
+      "bg-linear-to-r from-primary-500 to-orange-500 text-white shadow-lg hover:shadow-xl hover:scale-105",
     secondary:
       "bg-gradient-to-br from-secondary-500 to-secondary-600 text-white shadow-lg hover:shadow-xl hover:scale-105",
     outline: "bg-transparent text-gray-900 hover:shadow-lg hover:bg-gray-50",
@@ -180,8 +180,10 @@ export function GhostButton(props: Omit<ButtonProps, "variant">) {
 }
 
 // CTA Button with arrow (commonly used in your components)
-interface CTAButtonProps
-  extends Omit<ButtonProps, "icon" | "iconPosition" | "variant"> {
+interface CTAButtonProps extends Omit<
+  ButtonProps,
+  "icon" | "iconPosition" | "variant"
+> {
   variant?: "primary" | "secondary";
 }
 

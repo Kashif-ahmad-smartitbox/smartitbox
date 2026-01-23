@@ -154,7 +154,7 @@ export default function Hero({ data }: HeroProps) {
             if (process.env.NODE_ENV === "development") {
               console.warn(
                 "[Hero] Unmuted autoplay failed, trying muted:",
-                unmutedError
+                unmutedError,
               );
             }
           }
@@ -173,7 +173,7 @@ export default function Hero({ data }: HeroProps) {
         if (process.env.NODE_ENV === "development") {
           console.warn(
             `[Hero] Autoplay attempt ${retryCount + 1} failed:`,
-            error
+            error,
           );
         }
 
@@ -195,7 +195,7 @@ export default function Hero({ data }: HeroProps) {
         return false;
       }
     },
-    [isMuted]
+    [isMuted],
   );
 
   // Attempt autoplay when video is ready
@@ -248,7 +248,7 @@ export default function Hero({ data }: HeroProps) {
                 if (process.env.NODE_ENV === "development") {
                   console.warn(
                     "[Hero] Resume after visibility change failed:",
-                    err
+                    err,
                   );
                 }
               });

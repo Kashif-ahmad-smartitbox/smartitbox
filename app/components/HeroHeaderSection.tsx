@@ -26,8 +26,8 @@ export default function HeroHeader({ data }: { data: any }) {
     variant === "compact"
       ? "py-12"
       : variant === "left"
-      ? "py-20 sm:py-28"
-      : "py-20 sm:py-28";
+        ? "py-20 sm:py-28"
+        : "py-20 sm:py-28";
 
   return (
     <motion.section
@@ -146,7 +146,7 @@ export default function HeroHeader({ data }: { data: any }) {
                   transition={{ delay: 0.6, duration: 0.8 }}
                   className="relative block mt-4"
                 >
-                  <span className="relative z-10 text-primary-600">
+                  <span className="relative z-10 bg-linear-to-r from-primary-500 to-orange-500 bg-clip-text text-transparent">
                     {highlight}
                   </span>
                 </motion.span>
@@ -189,7 +189,7 @@ export default function HeroHeader({ data }: { data: any }) {
                     stiffness: 300,
                     damping: 25,
                   }}
-                  className="group relative px-8 py-4 rounded-full text-base font-semibold text-white bg-linear-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 shadow-lg shadow-primary-500/25 overflow-hidden"
+                  className="group relative px-8 py-4 rounded-full text-base font-semibold text-white bg-linear-to-r from-primary-500 to-orange-500 hover:from-primary-600 hover:to-primary-700 shadow-lg shadow-primary-500/25 overflow-hidden"
                 >
                   <span className="relative z-10">{ctaPrimary.label}</span>
                   <div className="absolute inset-0 bg-linear-to-r from-primary-400 to-primary-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

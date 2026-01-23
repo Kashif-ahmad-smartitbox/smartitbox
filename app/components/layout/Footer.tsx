@@ -174,7 +174,7 @@ const FooterColumn: React.FC<FooterColumnProps> = ({ title, items, index }) => (
     className="space-y-4"
   >
     <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-      <div className="w-1 h-6 bg-linear-to-b from-primary-500 to-primary-600 rounded-full mr-3" />
+      <div className="w-1 h-6 bg-linear-to-r from-primary-500 to-orange-500 rounded-full mr-3" />
       {title}
     </h3>
     <ul className="space-y-3">
@@ -232,7 +232,7 @@ const ContactRow: React.FC<ContactRowProps> = ({
         const encodedAddress = encodeURIComponent(value);
         window.open(
           `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`,
-          "_blank"
+          "_blank",
         );
         break;
       default:
@@ -291,8 +291,8 @@ const ContactRow: React.FC<ContactRowProps> = ({
         type === "email"
           ? "Send email to"
           : type === "phone"
-          ? "Call"
-          : "Open location for"
+            ? "Call"
+            : "Open location for"
       } ${value}`}
     >
       {content}
@@ -325,7 +325,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
 }) => {
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => onEmailChange(e.target.value),
-    [onEmailChange]
+    [onEmailChange],
   );
 
   return (
@@ -374,7 +374,7 @@ const NewsletterForm: React.FC<NewsletterFormProps> = ({
           damping: SPRING_CONFIG.damping,
           mass: SPRING_CONFIG.mass,
         }}
-        className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-linear-to-r from-primary-500 to-primary-600 text-white rounded-lg hover:scale-[1.02] transition-all duration-300 font-semibold shadow-lg shadow-primary-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none min-w-35"
+        className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-linear-to-r from-primary-500 to-orange-500 text-white rounded-lg hover:scale-[1.02] transition-all duration-300 font-semibold shadow-lg shadow-primary-500/25 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none min-w-35"
       >
         {isSubmitting ? (
           <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -453,13 +453,13 @@ const Footer: React.FC<{ data: FooterData }> = ({ data }) => {
         setStatus("error");
         setMessage(
           (err && (err.message || err?.response?.message)) ||
-            data.newsletter.errorMessages.generic
+            data.newsletter.errorMessages.generic,
         );
       } finally {
         setIsSubmitting(false);
       }
     },
-    [email, validateEmail, data.newsletter, deriveNameFromEmail]
+    [email, validateEmail, data.newsletter, deriveNameFromEmail],
   );
 
   const handleEmailChange = useCallback(
@@ -470,7 +470,7 @@ const Footer: React.FC<{ data: FooterData }> = ({ data }) => {
         setMessage("");
       }
     },
-    [status]
+    [status],
   );
 
   const formatContactInfo = (contact: ContactInfo) => {
@@ -563,7 +563,7 @@ const Footer: React.FC<{ data: FooterData }> = ({ data }) => {
             className="lg:col-span-2 space-y-6"
           >
             <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-              <div className="w-1 h-6 bg-linear-to-b from-primary-500 to-primary-600 rounded-full mr-3" />
+              <div className="w-1 h-6 bg-linear-to-r from-primary-500 to-orange-500 rounded-full mr-3" />
               Get in Touch
             </h3>
 
@@ -646,7 +646,7 @@ const Footer: React.FC<{ data: FooterData }> = ({ data }) => {
             >
               {data.copyright.text.replace(
                 "{year}",
-                data.copyright.year.toString()
+                data.copyright.year.toString(),
               )}
             </motion.div>
 

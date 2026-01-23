@@ -25,16 +25,16 @@ export function NavItem({
       ? "text-gray-600"
       : "text-white hover:text-gray-600"
     : isOpen
-    ? "text-gray-800"
-    : "text-white hover:text-gray-800";
+      ? "text-gray-800"
+      : "text-white hover:text-white";
 
   const bgClass = isScrolled
     ? isOpen
       ? "bg-gray-50"
       : "bg-primary-500 hover:bg-gray-100"
     : isOpen
-    ? "bg-white/20 backdrop-blur-sm"
-    : "hover:bg-white/10 bg-primary-500  hover:backdrop-blur-sm";
+      ? "bg-white/20 backdrop-blur-sm"
+      : "hover:bg-white/10 hover:backdrop-blur-sm";
 
   return (
     <div
@@ -44,7 +44,7 @@ export function NavItem({
     >
       <button
         onClick={onToggle}
-        className={`inline-flex items-center gap-2 py-2 px-5 font-semibold rounded-2xl transition-all duration-500 ${colorClass} ${bgClass} ${
+        className={`inline-flex items-center gap-2 py-2 px-5 font-semibold rounded-2xl transition-all duration-500 bg-linear-to-r from-primary-500 to-orange-500 text-white ${colorClass} ${bgClass} ${
           isOpen ? "shadow-lg" : ""
         }`}
         aria-expanded={isOpen}

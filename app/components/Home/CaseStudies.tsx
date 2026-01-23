@@ -74,7 +74,7 @@ export default function CaseStudies(props: any) {
             publishedAt: story.publishedAt,
             tags: story.tags,
             body: story.body,
-          })
+          }),
         );
 
         setCaseStudies(transformedStudies);
@@ -92,12 +92,12 @@ export default function CaseStudies(props: any) {
 
   const featured = useMemo(
     () => caseStudies.filter((c) => c.featured).slice(0, 3),
-    [caseStudies]
+    [caseStudies],
   );
 
   const others = useMemo(
     () => caseStudies.filter((c) => !c.featured),
-    [caseStudies]
+    [caseStudies],
   );
 
   const calculateReadingTime = (content: string) => {
@@ -172,7 +172,7 @@ export default function CaseStudies(props: any) {
                   ) : (
                     <div
                       className={`w-full h-full bg-linear-to-br ${getGradientColor(
-                        index
+                        index,
                       )} flex items-center justify-center`}
                     >
                       <Briefcase className="w-12 h-12 text-white/80" />
@@ -291,7 +291,7 @@ export default function CaseStudies(props: any) {
                   ) : (
                     <div
                       className={`w-full h-full bg-linear-to-br ${getGradientColor(
-                        index
+                        index,
                       )} flex items-center justify-center`}
                     >
                       <Briefcase className="w-10 h-10 text-white/80" />

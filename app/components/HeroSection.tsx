@@ -282,7 +282,7 @@ function HeroSection({ data }: HeroSectionProps) {
                                   animate={isMainInView ? { opacity: 1 } : {}}
                                   transition={{ delay: index * 0.15 + 0.3 }}
                                 >
-                                  <span className="relative z-30 bg-linear-to-r from-primary-500 via-primary-500 to-primary-500 bg-clip-text text-transparent bg-size-[200%_100%]">
+                                  <span className="relative z-30 bg-linear-to-r from-primary-500 to-orange-500 bg-clip-text text-transparent bg-size-[200%_100%]">
                                     {line}
                                   </span>
 
@@ -463,7 +463,7 @@ function HeroSection({ data }: HeroSectionProps) {
                   }}
                   href={data.ctaButton.href}
                   onClick={handleCtaClick}
-                  className="group relative bg-linear-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 rounded-full font-semibold text-sm sm:text-base shadow-lg shadow-primary-500/25 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center"
+                  className="group relative bg-linear-to-r from-primary-500 to-orange-500 hover:from-primary-600 hover:to-primary-700 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 rounded-full font-semibold text-sm sm:text-base shadow-lg shadow-primary-500/25 flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-center"
                 >
                   <span>{data.ctaButton.text}</span>
                   <ChevronRight
@@ -672,7 +672,7 @@ function AnimatedStat({ number, label, isInView, delay = 0 }: StatProps) {
         <div className="text-lg sm:text-xl md:text-2xl font-bold text-accent mb-1 sm:mb-2 min-h-8 sm:min-h-10 flex items-center justify-center">
           {isInView ? <Counter from={0} to={number} /> : "0+"}
         </div>
-        <div className="h-0.5 w-8 sm:w-10 md:w-12 bg-linear-to-r from-primary-400 to-primary-300 rounded-full mx-auto mb-2 sm:mb-3" />
+        <div className="h-0.5 w-8 sm:w-10 md:w-12 bg-linear-to-r from-primary-500 to-orange-500 rounded-full mx-auto mb-2 sm:mb-3" />
         <p className="text-xs sm:text-sm font-medium text-accent text-center line-clamp-2">
           {label}
         </p>
