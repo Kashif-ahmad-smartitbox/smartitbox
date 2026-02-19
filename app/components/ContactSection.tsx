@@ -259,6 +259,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const searchParams = useSearchParams();
   const urlRef = searchParams.get("ref") || "";
@@ -345,7 +346,7 @@ export default function ContactSection({ data }: ContactSectionProps) {
 
       await ContactApi.submitForm(payload);
 
-      window.location.href = "/thankyou";
+      setShowSuccessModal(true);
     } catch (error: any) {
       console.error("Failed to submit form:", error);
 
@@ -361,6 +362,20 @@ export default function ContactSection({ data }: ContactSectionProps) {
     }
   };
 
+  const handleCloseModal = () => {
+    setShowSuccessModal(false);
+    // Reset form
+    setFormData({
+      name: "",
+      email: "",
+      company: "",
+      subject: "",
+      message: "",
+    });
+    setErrors({});
+    setTouched({});
+  };
+
   // Icon mapping for contact info items
   const iconMap = {
     "Email us": Mail,
@@ -370,10 +385,102 @@ export default function ContactSection({ data }: ContactSectionProps) {
   };
 
   return (
-    <section
-      className="relative py-5 lg:py-20 overflow-hidden bg-white"
-      id="contact"
-    >
+    <>
+      {/* Thank You Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden border border-gray-100"
+          >
+            {/* Modal Header */}
+            <div className="bg-linear-to-br from-primary-50 to-primary-100 p-8 text-center relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary-600 rounded-full blur-3xl" />
+              </div>
+              
+              {/* Animated Success Icon */}
+              <div className="relative mb-4 inline-block">
+                <div className="w-20 h-20 rounded-full bg-linear-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-lg shadow-primary-500/30 mx-auto">
+                  <CheckCircle className="w-10 h-10 text-white" strokeWidth={2} />
+                </div>
+                <div className="absolute inset-0 rounded-full border-4 border-primary-300 animate-ping" />
+              </div>
+
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                {content.success.title}
+              </h2>
+              <p className="text-sm text-gray-600">
+                {content.success.description}
+              </p>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-8">
+              {/* Response Time Info */}
+              <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+                    <Clock className="w-5 h-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-blue-900 mb-1">
+                      Expected Response Time
+                    </h3>
+                    <p className="text-sm text-blue-700">
+                      We typically respond within 24 hours during business days.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Email Confirmation */}
+              <div className="bg-green-50 border border-green-100 rounded-xl p-4 mb-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5 text-green-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-semibold text-green-900 mb-1">
+                      Confirmation Email Sent
+                    </h3>
+                    <p className="text-sm text-green-700">
+                      Check your inbox for a confirmation message.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="space-y-3">
+                <motion.button
+                  onClick={handleCloseModal}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full px-6 py-3 rounded-lg bg-primary-500 text-white font-semibold hover:bg-primary-600 transition-all duration-300 shadow-lg shadow-primary-500/20"
+                >
+                  {content.form.buttons.anotherMessage}
+                </motion.button>
+                
+                <button
+                  onClick={() => (window.location.href = "/")}
+                  className="w-full px-6 py-3 rounded-lg border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition-all duration-300"
+                >
+                  Return to Homepage
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      <section
+        className="relative py-5 lg:py-20 overflow-hidden bg-white"
+        id="contact"
+      >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           {/* Contact Information Card */}
@@ -663,5 +770,6 @@ export default function ContactSection({ data }: ContactSectionProps) {
         </div>
       </div>
     </section>
+    </>
   );
 }
