@@ -503,7 +503,7 @@ function HeroSection({ data }: HeroSectionProps) {
             <div className="relative aspect-video overflow-hidden rounded-xl sm:rounded-2xl lg:rounded-3xl">
              <iframe
   className="absolute inset-0 w-full h-full rounded-xl sm:rounded-2xl lg:rounded-3xl"
-  src="https://www.youtube.com/embed/uOd5TSC4WPE?rel=0&modestbranding=1"
+  src="https://www.youtube.com/embed/z18YSV_8REE"
   title="YouTube video player"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
   referrerPolicy="strict-origin-when-cross-origin"
